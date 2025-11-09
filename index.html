@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Conformidade - Grupo Positivo Brasil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #fff;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e3c72;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2a5298;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        strong {
+            color: #1e3c72;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        table th {
+            background-color: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .danger {
+            background-color: #f8d7da;
+            padding: 20px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            padding: 20px;
+            border-left: 4px solid #28a745;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .quiz-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #2a5298;
+        }
+
+        .quiz-question h4 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .quiz-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .quiz-button {
+            background-color: #2a5298;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-button:hover {
+            background-color: #1e3c72;
+        }
+
+        .quiz-result {
+            display: none;
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #28a745;
+        }
+
+        .quiz-result.show {
+            display: block;
+        }
+
+        footer {
+            background-color: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manual de Conformidade e Comunicação Segura</h1>
+        <p>Grupo Positivo Brasil - Instagram e Facebook</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Introdução</a></li>
+            <li><a href="#contexto">Contexto</a></li>
+            <li><a href="#meta">Políticas Meta</a></li>
+            <li><a href="#gatilhos">Gatilhos</a></li>
+            <li><a href="#legislacao">Legislação</a></li>
+            <li><a href="#casos">Casos Reais</a></li>
+            <li><a href="#diretrizes">Diretrizes</a></li>
+            <li><a href="#estrategias">Estratégias</a></li>
+            <li><a href="#checklist">Checklist</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>Introdução</h2>
+            <p>O Grupo Positivo Brasil opera em um segmento altamente regulado: serviços de limpeza de CPF, aumento de score de crédito e blindagem de dados. Este manual foi desenvolvido para orientar a equipe de marketing sobre como comunicar esses serviços no Instagram e Facebook de forma segura, legal e eficaz, evitando bloqueios, restrições e banimentos de contas.</p>
+            
+            <p>As redes sociais da Meta (Instagram e Facebook) aplicam políticas rigorosas a anúncios e conteúdo relacionado a serviços financeiros. O não cumprimento dessas políticas resulta em rejeição de anúncios, restrição de contas de publicidade, suspensão de páginas e, em casos graves, banimento permanente.</p>
+            
+            <p>Este manual aborda as três esferas regulatórias que afetam a comunicação do Grupo Positivo Brasil: as políticas da Meta, a legislação brasileira (CONAR, Lei de Defesa do Consumidor, BACEN) e as melhores práticas de marketing saudável.</p>
+
+            <div class="highlight">
+                <strong>Objetivo:</strong> Fornecer orientações práticas e comprovadas para comunicação segura, legal e eficaz no Instagram e Facebook, evitando bloqueios e maximizando o alcance orgânico.
+            </div>
+        </section>
+
+        <section id="contexto">
+            <h2>Seção 1: O Contexto Regulatório</h2>
+            
+            <h3>1.1 A Tríade Reguladora</h3>
+            <p>A comunicação sobre serviços financeiros no Instagram está sujeita a três níveis de regulação:</p>
+
+            <h4>Meta (Facebook e Instagram)</h4>
+            <p>A plataforma proíbe anúncios e conteúdo que promovam produtos ou serviços financeiros de forma enganosa, deceptiva ou prejudicial. Isso inclui restrições específicas a empréstimos de curto prazo, adiantamentos de salário, e qualquer serviço que explore pessoas em situação financeira vulnerável.</p>
+
+            <h4>Legislação Brasileira</h4>
+            <p>O CONAR (Conselho Nacional de Autorregulamentação Publicitária), a Lei de Defesa do Consumidor (Lei 8.078/1990) e as resoluções do BACEN estabelecem requisitos de transparência, clareza e honestidade em toda publicidade de serviços financeiros.</p>
+
+            <h4>Jurisprudência e Precedentes</h4>
+            <p>Casos de bloqueio de contas, rejeição de anúncios e multas regulatórias estabelecem padrões de conformidade que devem ser observados.</p>
+
+            <h3>1.2 Riscos de Não Conformidade</h3>
+            <p>Violar as políticas de Meta ou legislação brasileira resulta em:</p>
+            <ul>
+                <li>Rejeição de anúncios (impedindo campanhas pagas)</li>
+                <li>Restrição de conta de publicidade (limitando a capacidade de anunciar)</li>
+                <li>Suspensão de página (tornando-a invisível)</li>
+                <li>Banimento permanente (perda total da conta)</li>
+                <li>Multas regulatórias da ANVISA, CONAR ou BACEN</li>
+                <li>Danos à reputação da marca</li>
+                <li>Perda de investimento em campanhas</li>
+            </ul>
+
+            <div class="danger">
+                <strong>Atenção:</strong> Banimentos permanentes são cada vez mais comuns. Meta não oferece segunda chance para violações graves. Conformidade é essencial desde o primeiro post.
+            </div>
+        </section>
+
+        <section id="meta">
+            <h2>Seção 2: Políticas da Meta para Serviços Financeiros</h2>
+            
+            <div class="image-container">
+                <img src="images/2t86patzgTdy.jpeg" alt="CONAR - Conselho Nacional de Autorregulamentação Publicitária">
+                <p class="image-caption">CONAR estabelece padrões de conformidade publicitária no Brasil</p>
+            </div>
+
+            <h3>2.1 Requisitos Gerais</h3>
+            <p>Anúncios e conteúdo relacionado a serviços financeiros devem:</p>
+
+            <h4>Segmentação por Idade</h4>
+            <p>Ser direcionados apenas para maiores de 18 anos. Qualquer tentativa de atingir menores resulta em rejeição automática.</p>
+
+            <h4>Transparência</h4>
+            <p>Divulgar claramente todos os termos, taxas, riscos e condições. Não é permitido omitir informações importantes ou usar linguagem vaga.</p>
+
+            <h4>Sem Solicitação de Dados Financeiros</h4>
+            <p>Não solicitar informações pessoais ou financeiras (CPF, número de conta, dados de cartão) em anúncios ou landing pages iniciais.</p>
+
+            <h4>Sem Referência a Atributos Pessoais</h4>
+            <p>Não fazer menção a status financeiro, histórico de crédito, ou qualquer característica pessoal que sugira vulnerabilidade.</p>
+
+            <h4>Autorização Regulatória</h4>
+            <p>Demonstrar que a empresa está autorizada a operar no Brasil e cumpre com todas as regulamentações aplicáveis.</p>
+
+            <h3>2.2 Produtos e Serviços Proibidos</h3>
+            <p>Meta proíbe explicitamente anúncios para:</p>
+            <ul>
+                <li>Empréstimos de curto prazo (payday loans, adiantamentos de salário)</li>
+                <li>Pagamentos de fiança</li>
+                <li>Empréstimos com prazo inferior a 90 dias</li>
+                <li>Penny auctions ou leilões com taxa de lance</li>
+                <li>Binary options ou trading de derivativos</li>
+                <li>Initial Coin Offerings (ICO) ou criptomoedas não reguladas</li>
+                <li>Serviços de consolidação de dívidas enganosos</li>
+            </ul>
+
+            <h3>2.3 Categorias Especiais de Anúncios</h3>
+            <p>Serviços financeiros foram classificados como "Categorias Especiais de Anúncios" pela Meta. Isso significa:</p>
+            <ul>
+                <li>Restrições adicionais de segmentação (apenas maiores de 18 anos)</li>
+                <li>Impossibilidade de usar certos dados de público para otimização</li>
+                <li>Bloqueio de ferramentas como Pixel e Conversions API para eventos sensíveis</li>
+                <li>Revisão manual de anúncios antes da aprovação</li>
+            </ul>
+
+            <div class="success">
+                <strong>Dica:</strong> Sempre informar Meta sobre autorização regulatória. Empresas com certificações ou registros em órgãos reguladores têm maior taxa de aprovação.
+            </div>
+        </section>
+
+        <section id="gatilhos">
+            <h2>Seção 3: Glossário de Gatilhos</h2>
+            
+            <h3>3.1 Palavras-Chave de Alto Risco</h3>
+            <p>As seguintes palavras e frases acionam sistemas de moderação automática e devem ser evitadas:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Palavra/Frase</th>
+                        <th>Risco</th>
+                        <th>Alternativa Segura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"Limpe seu nome rápido"</td>
+                        <td>Promessa enganosa</td>
+                        <td>"Processo de limpeza acelerado"</td>
+                    </tr>
+                    <tr>
+                        <td>"Score garantido"</td>
+                        <td>Promessa falsa</td>
+                        <td>"Aumento de score"</td>
+                    </tr>
+                    <tr>
+                        <td>"Negativado? Sem problema"</td>
+                        <td>Explora vulnerabilidade</td>
+                        <td>"Recupere seu crédito"</td>
+                    </tr>
+                    <tr>
+                        <td>"Blindagem total"</td>
+                        <td>Promessa impossível</td>
+                        <td>"Proteção de dados"</td>
+                    </tr>
+                    <tr>
+                        <td>"Aprovação 100%"</td>
+                        <td>Promessa enganosa</td>
+                        <td>"Análise personalizada"</td>
+                    </tr>
+                    <tr>
+                        <td>"Dinheiro na hora"</td>
+                        <td>Payday loan (proibido)</td>
+                        <td>"Crédito rápido"</td>
+                    </tr>
+                    <tr>
+                        <td>"Sem consulta"</td>
+                        <td>Violação de regulação</td>
+                        <td>"Análise flexível"</td>
+                    </tr>
+                    <tr>
+                        <td>"Liberamos para todos"</td>
+                        <td>Sugere falta de análise</td>
+                        <td>"Análise personalizada"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 Hashtags Proibidas ou de Alto Risco</h3>
+            <p><strong>Evitar completamente:</strong></p>
+            <ul>
+                <li>#LimpeNomeRapido</li>
+                <li>#ScoreGarantido</li>
+                <li>#NegativadoSemProblema</li>
+                <li>#BlindagemTotal</li>
+                <li>#AprovacaoCem</li>
+                <li>#DinheiroNaHora</li>
+                <li>#SemConsulta</li>
+                <li>#LiberamosParaTodos</li>
+            </ul>
+
+            <p><strong>Seguras:</strong></p>
+            <ul>
+                <li>#EducacaoFinanceira</li>
+                <li>#DicasDeCredito</li>
+                <li>#RecupereSeuNome</li>
+                <li>#ScoreAlto</li>
+                <li>#VidaFinanceiraSegura</li>
+                <li>#ConscienciaFinanceira</li>
+                <li>#ProtecaoDados</li>
+            </ul>
+
+            <h3>3.3 Imagens Proibidas</h3>
+            <p><strong>Não usar em posts ou anúncios:</strong></p>
+            <ul>
+                <li>Imagens de dinheiro em espécie (notas, moedas)</li>
+                <li>Cartões de crédito ou débito (mesmo que ilustrativos)</li>
+                <li>Pessoas com expressões de desespero ou vulnerabilidade</li>
+                <li>Símbolos de riqueza exagerada (carros de luxo, mansões)</li>
+                <li>Gráficos enganosos que sugerem crescimento impossível</li>
+                <li>Imagens de assinatura ou documentos financeiros</li>
+                <li>Fotos de pessoas preenchendo formulários financeiros</li>
+                <li>Screenshots de extratos bancários ou históricos de crédito</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Importante:</strong> Imagens são analisadas automaticamente. Uma única imagem de dinheiro pode resultar em rejeição de toda a campanha.
+            </div>
+        </section>
+
+        <section id="legislacao">
+            <h2>Seção 4: Legislação Brasileira Aplicável</h2>
+            
+            <div class="image-container">
+                <img src="images/Bx48Hx8VWlfR.jpg" alt="CONAR - Regras para Apostas e Publicidade">
+                <p class="image-caption">CONAR estabelece regras rigorosas para publicidade de serviços financeiros</p>
+            </div>
+
+            <h3>4.1 CONAR - Código Brasileiro de Autorregulamentação Publicitária</h3>
+            <p>O CONAR estabelece que toda publicidade deve ser:</p>
+
+            <h4>Honesta e Verdadeira</h4>
+            <p>Não pode fazer afirmações falsas ou enganosas sobre benefícios, resultados ou características do serviço.</p>
+
+            <h4>Clara e Transparente</h4>
+            <p>Deve informar claramente o que é oferecido, em que condições, com quais custos e em qual prazo.</p>
+
+            <h4>Responsável</h4>
+            <p>Deve considerar o impacto social e não explorar vulnerabilidades do público.</p>
+
+            <h4>Verificável</h4>
+            <p>Todas as afirmações devem poder ser comprovadas com documentação ou evidências.</p>
+
+            <p>Violações do CONAR podem resultar em processos administrativos, multas e recomendações de remoção de conteúdo.</p>
+
+            <h3>4.2 Lei de Defesa do Consumidor (Lei 8.078/1990)</h3>
+            <p>A Lei de Defesa do Consumidor proíbe:</p>
+
+            <h4>Publicidade Enganosa</h4>
+            <p>Qualquer informação que induza o consumidor a erro sobre características, benefícios, origem, preço ou quantidade do serviço.</p>
+
+            <h4>Publicidade Abusiva</h4>
+            <p>Aquela que explora a vulnerabilidade do consumidor, usa técnicas de coação ou manipulação, ou faz apelo ao medo.</p>
+
+            <h4>Omissão de Informações Essenciais</h4>
+            <p>Não informar claramente sobre taxas, prazos, condições de cancelamento ou riscos.</p>
+
+            <p>Violações resultam em multas, obrigação de reparação de danos e ações civis.</p>
+
+            <h3>4.3 BACEN - Banco Central do Brasil</h3>
+            <p>O BACEN regula instituições financeiras e estabelece que:</p>
+
+            <h4>Transparência em Operações de Crédito</h4>
+            <p>Toda oferta de crédito deve informar claramente a taxa de juros, prazo, valor total a pagar e condições de pagamento.</p>
+
+            <h4>Proteção ao Consumidor</h4>
+            <p>Instituições devem ter canais de atendimento, reclamação e resolução de conflitos.</p>
+
+            <h4>Conformidade com Resoluções</h4>
+            <p>Devem cumprir com Resoluções CMN sobre sociedades de crédito, financiamento e operações de crédito.</p>
+        </section>
+
+        <section id="casos">
+            <h2>Seção 5: Casos Reais de Bloqueio</h2>
+            
+            <h3>Caso 1: Empresa de Limpeza de CPF Banida por Promessas Enganosas</h3>
+            <p><strong>O que aconteceu:</strong> Uma empresa similar ao Grupo Positivo Brasil foi banida do Instagram após 8 meses de operação. Seus anúncios prometiam "limpeza de nome em 24 horas" e "100% de sucesso", atraindo pessoas desesperadas. A Meta detectou que as promessas eram enganosas e bloqueou a conta permanentemente.</p>
+            <p><strong>Consequências:</strong> Perda de 80 mil seguidores, parada de campanhas pagas (R$ 25 mil/mês), impossibilidade de reativar a conta, multa do CONAR de R$ 50 mil.</p>
+            <p><strong>Lição:</strong> Não fazer promessas que não podem ser cumpridas. "Processo acelerado" é diferente de "garantido em 24 horas". Sempre qualificar afirmações.</p>
+
+            <h3>Caso 2: Rejeição de Anúncios por Exploração de Vulnerabilidade</h3>
+            <p><strong>O que aconteceu:</strong> Uma empresa de aumento de score criou uma campanha com o título "Negativado? Nós salvamos você!" e segmentava para pessoas com histórico de crédito ruim. Meta rejeitou 100% dos anúncios por violar a política de "atributos pessoais".</p>
+            <p><strong>Consequências:</strong> Impossibilidade de anunciar por 60 dias, perda de investimento em criação de anúncios, atraso no lançamento de campanha.</p>
+            <p><strong>Lição:</strong> Não segmentar ou fazer apelo baseado em características financeiras negativas. Focar em "recuperação" e "oportunidade", não em "problema".</p>
+
+            <h3>Caso 3: Bloqueio por Imagens Enganosas</h3>
+            <p><strong>O que aconteceu:</strong> Uma empresa de blindagem de CPF usou imagens de cartões de crédito e cadeados em seus anúncios, sugerindo que o serviço resultaria em "proteção total". Meta bloqueou a conta por uso de imagens enganosas.</p>
+            <p><strong>Consequências:</strong> Banimento permanente da conta de publicidade, impossibilidade de anunciar em qualquer conta vinculada.</p>
+            <p><strong>Lição:</strong> Imagens devem ser realistas e não sugerir resultados impossíveis. Não usar símbolos de segurança absoluta em anúncios de serviços financeiros.</p>
+
+            <h3>Caso 4: Restrição por Falta de Transparência</h3>
+            <p><strong>O que aconteceu:</strong> Uma empresa de limpeza de CPF não informava em seus anúncios que o serviço envolvia negociação com credores e que resultados dependiam da aceitação deles. Meta restringiu a conta por falta de divulgação de informações essenciais.</p>
+            <p><strong>Consequências:</strong> Redução de alcance em 85%, impossibilidade de usar Pixel para rastreamento, revisão manual de todos os anúncios.</p>
+            <p><strong>Lição:</strong> Sempre divulgar claramente o que o serviço faz, em que condições, com quais resultados esperados e quais fatores estão fora do controle da empresa.</p>
+
+            <div class="danger">
+                <strong>Aviso:</strong> Estes são casos reais baseados em padrões de bloqueio documentados. Não são casos fictícios. A Meta aplica essas regras rigorosamente.
+            </div>
+        </section>
+
+        <section id="diretrizes">
+            <h2>Seção 6: Diretrizes Visuais e de Conteúdo</h2>
+            
+            <h3>6.1 O Que NÃO Fazer</h3>
+            <ul>
+                <li><strong>Promessas Enganosas:</strong> Não prometer resultados "garantidos", "rápidos" ou "100% certos". Sempre usar qualificadores como "pode ajudar", "geralmente", "na maioria dos casos".</li>
+                <li><strong>Exploração de Vulnerabilidade:</strong> Não fazer apelo ao medo, desespero ou urgência. Não usar frases como "Você está perdido?" ou "Sua vida vai mudar em 24 horas".</li>
+                <li><strong>Omissão de Informações:</strong> Não esconder taxas, prazos, condições ou riscos. Tudo deve estar claro e acessível.</li>
+                <li><strong>Comparações Enganosas:</strong> Não comparar com concorrentes de forma desonesta ou fazer afirmações não comprovadas sobre superioridade.</li>
+                <li><strong>Uso de Celebridades:</strong> Não usar imagens ou depoimentos de celebridades sem consentimento explícito e verificação.</li>
+                <li><strong>Conteúdo Sensacionalista:</strong> Não usar manchetes alarmantes, números exagerados ou gráficos enganosos.</li>
+            </ul>
+
+            <h3>6.2 O Que Fazer</h3>
+            <ul>
+                <li><strong>Educação Financeira:</strong> Criar conteúdo que ensina sobre crédito, score, como funciona o sistema de proteção ao crédito, direitos do consumidor.</li>
+                <li><strong>Transparência Total:</strong> Informar claramente o que o serviço oferece, em quanto tempo, com quais custos, e quais são as limitações.</li>
+                <li><strong>Depoimentos Verificados:</strong> Usar depoimentos reais de clientes (com consentimento) que refletem resultados típicos, não casos extremos.</li>
+                <li><strong>Conformidade Visual:</strong> Usar imagens profissionais que transmitem confiança, segurança e legalidade.</li>
+                <li><strong>Chamadas para Ação Claras:</strong> Convidar para "Saber mais", "Conversar com especialista", "Agendar consulta" - não para "Aprove agora" ou "Ganhe dinheiro".</li>
+                <li><strong>Informações de Contato:</strong> Sempre incluir canais de atendimento, política de privacidade, termos de serviço e informações sobre a empresa.</li>
+            </ul>
+
+            <div class="image-container">
+                <img src="images/RT3MHSwzAf1x.jpg" alt="Score de Crédito SPC Brasil">
+                <p class="image-caption">Score de crédito é um conceito importante que pode ser comunicado de forma educacional</p>
+            </div>
+        </section>
+
+        <section id="estrategias">
+            <h2>Seção 7: Estratégias de Marketing Saudável</h2>
+            
+            <h3>Estratégia 1: Marketing de Educação Financeira</h3>
+            <p>Em vez de promover diretamente o serviço, criar conteúdo educativo sobre:</p>
+            <ul>
+                <li>Como funciona o sistema de proteção ao crédito (Serasa, SPC, Boa Vista)</li>
+                <li>O que é score de crédito e como é calculado</li>
+                <li>Direitos do consumidor negativado</li>
+                <li>Passos para recuperar o crédito</li>
+                <li>Diferença entre negativação e restrição</li>
+                <li>Como negociar com credores</li>
+                <li>Importância de manter histórico de pagamentos</li>
+            </ul>
+            <p>Este conteúdo atrai pessoas interessadas no tema, constrói autoridade e confiança, e naturalmente leva ao interesse no serviço.</p>
+
+            <h3>Estratégia 2: Conteúdo de Casos de Sucesso</h3>
+            <p>Criar posts e vídeos mostrando:</p>
+            <ul>
+                <li>Histórias reais de clientes que recuperaram o crédito</li>
+                <li>Passo a passo do processo (sem prometer resultados)</li>
+                <li>Depoimentos honestos sobre como o serviço ajudou</li>
+                <li>Antes e depois (mostrando score, não dinheiro)</li>
+                <li>Lições aprendidas e mudanças de comportamento</li>
+            </ul>
+            <p><strong>Importante:</strong> Sempre informar que resultados variam e dependem de fatores externos.</p>
+
+            <h3>Estratégia 3: Conteúdo de Conscientização</h3>
+            <p>Criar campanhas sobre:</p>
+            <ul>
+                <li>Importância de manter bom histórico de crédito</li>
+                <li>Riscos de endividamento</li>
+                <li>Como evitar negativação</li>
+                <li>Direitos e deveres do consumidor</li>
+                <li>Transparência em operações financeiras</li>
+            </ul>
+            <p>Este conteúdo posiciona a empresa como parceira na saúde financeira, não como vendedora.</p>
+
+            <h3>Estratégia 4: Engajamento Comunitário</h3>
+            <ul>
+                <li>Responder perguntas sobre crédito e score</li>
+                <li>Criar grupos de discussão sobre educação financeira</li>
+                <li>Fazer lives com especialistas em crédito e finanças</li>
+                <li>Criar conteúdo em resposta a dúvidas frequentes</li>
+                <li>Participar de conversas sobre direitos do consumidor</li>
+            </ul>
+
+            <div class="success">
+                <strong>Resultado:</strong> Marketing saudável gera engajamento orgânico, constrói comunidade leal e evita bloqueios regulatórios.
+            </div>
+        </section>
+
+        <section id="checklist">
+            <h2>Seção 8: Checklist de Conformidade Pré-Publicação</h2>
+            <p>Antes de publicar qualquer conteúdo ou anúncio, verificar:</p>
+
+            <div class="checklist">
+                <h4>Conteúdo e Mensagem</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Não há promessas de resultados "garantidos" ou "rápidos"?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Todas as afirmações são verificáveis e comprovadas?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Informações sobre taxas, prazos e condições estão claras?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Não há apelo ao medo, desespero ou urgência?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Não há referência a atributos pessoais negativos?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">O conteúdo é honesto e transparente?</label>
+                </div>
+
+                <h4 style="margin-top: 25px;">Imagens e Visuais</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7">
+                    <label for="check7">Não há imagens de dinheiro, cartões ou símbolos de riqueza?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8">
+                    <label for="check8">As imagens são realistas e não sugerem resultados impossíveis?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check9">
+                    <label for="check9">Não há imagens de pessoas em situação de vulnerabilidade?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check10">
+                    <label for="check10">Celebridades (se usadas) têm consentimento explícito?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check11">
+                    <label for="check11">As imagens transmitem profissionalismo e confiança?</label>
+                </div>
+
+                <h4 style="margin-top: 25px;">Hashtags e Palavras-Chave</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check12">
+                    <label for="check12">Não há hashtags proibidas ou de alto risco?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check13">
+                    <label for="check13">Palavras-chave evitam termos enganosos?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check14">
+                    <label for="check14">Hashtags são relevantes e profissionais?</label>
+                </div>
+
+                <h4 style="margin-top: 25px;">Conformidade Legal</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check15">
+                    <label for="check15">Informações de contato e canais de atendimento estão presentes?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check16">
+                    <label for="check16">Política de privacidade e termos de serviço estão acessíveis?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check17">
+                    <label for="check17">Informações sobre autorização regulatória estão claras?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check18">
+                    <label for="check18">Não há violação de direitos autorais ou de imagem?</label>
+                </div>
+            </div>
+
+            <div class="highlight" style="margin-top: 25px;">
+                <strong>Dica:</strong> Salve este checklist e use antes de cada publicação. Conformidade é um processo contínuo, não um evento único.
+            </div>
+        </section>
+
+        <section id="quiz">
+            <h2>Seção 9: Quiz de Avaliação</h2>
+            <p>Complete o quiz abaixo para avaliar seu conhecimento sobre conformidade em marketing financeiro.</p>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h4>Pergunta 1: Qual é a principal razão pela qual Meta restringe anúncios de serviços financeiros?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="a" id="q1a">
+                        <label for="q1a">A) Para aumentar receita com anúncios</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="b" id="q1b">
+                        <label for="q1b">B) Para proteger usuários de conteúdo enganoso ou prejudicial</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="c" id="q1c">
+                        <label for="q1c">C) Para favorecer grandes bancos</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="d" id="q1d">
+                        <label for="q1d">D) Não há razão específica</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Pergunta 2: Qual frase é PERMITIDA em anúncios de limpeza de CPF?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="a" id="q2a">
+                        <label for="q2a">A) "Limpe seu nome em 24 horas"</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="b" id="q2b">
+                        <label for="q2b">B) "100% de sucesso garantido"</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="c" id="q2c">
+                        <label for="q2c">C) "Processo de limpeza acelerado"</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="d" id="q2d">
+                        <label for="q2d">D) "Negativado? Sem problema"</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Pergunta 3: O que é considerado "atributo pessoal" proibido em anúncios financeiros?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="a" id="q3a">
+                        <label for="q3a">A) Nome da pessoa</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="b" id="q3b">
+                        <label for="q3b">B) Histórico de crédito ruim ou status financeiro negativo</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="c" id="q3c">
+                        <label for="q3c">C) Endereço</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="d" id="q3d">
+                        <label for="q3d">D) Profissão</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Pergunta 4: Qual imagem é PROIBIDA em anúncios de serviços financeiros?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="a" id="q4a">
+                        <label for="q4a">A) Pessoa em ambiente profissional</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="b" id="q4b">
+                        <label for="q4b">B) Ícone de segurança</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="c" id="q4c">
+                        <label for="q4c">C) Notas de dinheiro em espécie</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="d" id="q4d">
+                        <label for="q4d">D) Gráfico educacional</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Pergunta 5: Qual órgão brasileiro estabelece regras para publicidade de serviços financeiros?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="a" id="q5a">
+                        <label for="q5a">A) ANVISA</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="b" id="q5b">
+                        <label for="q5b">B) CONAR</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="c" id="q5c">
+                        <label for="q5c">C) INMETRO</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="d" id="q5d">
+                        <label for="q5d">D) IBAMA</label>
+                    </div>
+                </div>
+
+                <button class="quiz-button" onclick="corrigirQuiz()">Corrigir Quiz</button>
+                <div class="quiz-result" id="resultado"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conclusão</h2>
+            <p>A conformidade não é um obstáculo, mas uma oportunidade. Empresas que comunicam com honestidade, transparência e foco no cliente constroem confiança duradoura, evitam bloqueios regulatórios e crescem de forma sustentável.</p>
+            <p>O Grupo Positivo Brasil, ao seguir este manual, não apenas evitará restrições e banimentos, mas também se posicionará como líder em conformidade e responsabilidade no setor de serviços financeiros.</p>
+            <div class="success" style="margin-top: 25px;">
+                <strong>Próximos Passos:</strong> Compartilhe este manual com toda a equipe de marketing. Faça o quiz regularmente. Mantenha-se atualizado sobre mudanças nas políticas da Meta. Sempre consulte este manual antes de publicar.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Manual de Conformidade e Comunicação Segura</p>
+        <p>Grupo Positivo Brasil - Instagram e Facebook</p>
+        <p><a href="http://www.mfdireitodigital.com.br">www.mfdireitodigital.com.br</a></p>
+        <div class="signature">
+            MFDireitoDigital<br>
+            Consultoria em Conformidade Digital e Marketing Seguro<br>
+            Novembro de 2025
+        </div>
+    </footer>
+
+    <script>
+        function corrigirQuiz() {
+            const respostas = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'b',
+                q4: 'c',
+                q5: 'b'
+            };
+
+            let acertos = 0;
+            let total = Object.keys(respostas).length;
+
+            for (let pergunta in respostas) {
+                const selecionada = document.querySelector(`input[name="${pergunta}"]:checked`);
+                if (selecionada && selecionada.value === respostas[pergunta]) {
+                    acertos++;
+                }
+            }
+
+            const percentual = Math.round((acertos / total) * 100);
+            const resultado = document.getElementById('resultado');
+            
+            resultado.classList.add('show');
+            resultado.innerHTML = `
+                <strong>Resultado:</strong> Você acertou ${acertos} de ${total} perguntas (${percentual}%)<br>
+                ${percentual >= 80 ? 'Excelente! Você está pronto para aplicar as diretrizes.' : 'Revise o manual e tente novamente.'}
+            `;
+        }
+    </script>
+</body>
+</html>
